@@ -8,7 +8,7 @@ public class PipeCollector : MonoBehaviour
     private GameObject[] _pipeHolders;
     private float _distance = 7.172364f;
     private float _lastPipeX;
-    private float _pipeMin = -0.25f;
+    private float _pipeMin = -1.75f;
     private float _pipeMax = 2.5f;
 
     private void Awake()

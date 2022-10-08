@@ -10,6 +10,8 @@ public class BirdScript : MonoBehaviour
 
     [SerializeField] private Rigidbody2D _birdBody;
     [SerializeField] private Animator _birdAnimator;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _flapClip, _pointClip, _deathClip;
     private Button _flapButton;
 
     private float _forwardSpeed = 3f;
@@ -17,14 +19,21 @@ public class BirdScript : MonoBehaviour
 
     private bool _didFlap;
 
-    public bool isDead;
+    [HideInInspector] public bool isDead;
+
+    [HideInInspector] public int score;
     private void Awake()
     {
         MakeSingleton();
-        _flapButton = GameObject.FindGameObjectWithTag("FlapButton").GetComponent<Button>();
-        _flapButton.onClick.AddListener(() => FlapBird());
-        isDead = false;
+        InitializeButton();
         SetCameraX();
+        isDead = false;
+        score = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        BirdMovement();
     }
     private void MakeSingleton()
     {
@@ -38,9 +47,17 @@ public class BirdScript : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-    private void FixedUpdate()
+
+    private void InitializeButton()
     {
-        BirdMovement();
+        _flapButton = GameObject.FindGameObjectWithTag("FlapButton").GetComponent<Button>();
+        _flapButton.onClick.AddListener(() => FlapBird());
+    }
+
+
+    private void SetCameraX()
+    {
+        CameraScript.offSetX = (Camera.main.transform.position.x - transform.position.x) - 1f;
     }
 
     private void BirdMovement()
@@ -56,6 +73,7 @@ public class BirdScript : MonoBehaviour
                 _didFlap = false;
                 _birdBody.velocity = new Vector2(0, _bounceSpeed);
                 _birdAnimator.SetTrigger("Flap");
+                _audioSource.PlayOneShot(_flapClip);
             }
 
             if (_birdBody.velocity.y >= 0)
@@ -70,10 +88,30 @@ public class BirdScript : MonoBehaviour
             }
         }
     }
-    private void SetCameraX()
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        CameraScript.offSetX = (Camera.main.transform.position.x - transform.position.x) - 1f;
+        if (other.tag == "PipeHolder")
+        {
+            _audioSource.PlayOneShot(_pointClip);
+            score++;
+            Debug.Log("Score: " + score);
+        }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ground" || other.gameObject.tag == "Pipe")
+        {
+            if (!isDead)
+            {
+                isDead = true;
+                _birdAnimator.SetTrigger("Dead");
+                _audioSource.PlayOneShot(_deathClip);
+            }
+        }
+    }
+
     public void FlapBird()
     {
         _didFlap = true;

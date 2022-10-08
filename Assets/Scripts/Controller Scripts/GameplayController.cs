@@ -20,20 +20,15 @@ public class GameplayController : MonoBehaviour
 
     private void Awake()
     {
-        MakeSingleton();
+        MakeInstance();
         Time.timeScale = 0f;
     }
 
-    private void MakeSingleton()
+    private void MakeInstance()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

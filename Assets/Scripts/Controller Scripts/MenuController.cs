@@ -11,7 +11,7 @@ public class MenuController : MonoBehaviour
 
     private void Awake()
     {
-        MakeSingleton();
+        MakeInstance();
     }
 
     private void Start()
@@ -19,16 +19,11 @@ public class MenuController : MonoBehaviour
         CheckIfBirdsAreUnlocked();
     }
 
-    private void MakeSingleton()
+    private void MakeInstance()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
+        if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
     }
 

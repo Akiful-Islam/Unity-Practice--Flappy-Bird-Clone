@@ -40,7 +40,7 @@ public class MenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneFader.instance.FadeIn("Gameplay");
+        SceneFader.instance.LoadScene("Gameplay");
     }
 
     public void ChangeBirdsColor()

@@ -28,7 +28,7 @@ public class SceneFader : MonoBehaviour
         }
     }
 
-    public void FadeIn(string levelName)
+    public void LoadScene(string levelName)
     {
         StartCoroutine(FadeInAnim(levelName));
     }

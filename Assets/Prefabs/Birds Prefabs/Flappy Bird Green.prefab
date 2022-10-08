@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3091252771892275100
 Transform:
   m_ObjectHideFlags: 0
@@ -285,3 +285,4 @@ MonoBehaviour:
   _pointClip: {fileID: 8300000, guid: d3c941ed3103e9c4b9dda4e7dfe07dde, type: 3}
   _deathClip: {fileID: 8300000, guid: a16cb6fad8a7372418568bceba779a21, type: 3}
   isDead: 0
+  score: 0

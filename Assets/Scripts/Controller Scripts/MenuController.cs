@@ -38,6 +38,11 @@ public class MenuController : MonoBehaviour
         _isRedBirdUnlocked = GameController.instance.IsRedBirdUnlocked();
     }
 
+    public void StartGame()
+    {
+        SceneFader.instance.FadeIn("Gameplay");
+    }
+
     public void ChangeBirdsColor()
     {
         if (GameController.instance.GetSelectedBird() == 0)

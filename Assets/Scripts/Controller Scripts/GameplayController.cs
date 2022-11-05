@@ -16,6 +16,7 @@ public class GameplayController : MonoBehaviour
     [SerializeField] private GameObject _stoppedPanel;
     [SerializeField] private GameObject[] _birds;
     [SerializeField] private Sprite[] _medals;
+    [SerializeField] private int _bronzeScore = 5, _silverScore = 15, _goldScore = 25;
     [SerializeField] private Image _medalImage;
 
     private void Awake()
@@ -95,7 +96,7 @@ public class GameplayController : MonoBehaviour
 
     private void SetMedal(int score)
     {
-        if (score > 30)
+        if (score >= _goldScore)
         {
             _medalImage.sprite = _medals[2];
 
@@ -104,7 +105,7 @@ public class GameplayController : MonoBehaviour
                 GameController.instance.UnlockRedBird();
             }
         }
-        else if (score > 15)
+        else if (score >= _silverScore)
         {
             _medalImage.sprite = _medals[1];
             if (!GameController.instance.IsGreenBirdUnlocked())
@@ -112,7 +113,7 @@ public class GameplayController : MonoBehaviour
                 GameController.instance.UnlockGreenBird();
             }
         }
-        else if (score > 5)
+        else if (score >= _bronzeScore)
         {
             _medalImage.sprite = _medals[0];
         }

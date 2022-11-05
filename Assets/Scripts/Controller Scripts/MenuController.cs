@@ -38,6 +38,12 @@ public class MenuController : MonoBehaviour
         SceneFader.instance.LoadScene("Gameplay");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+
     public void ChangeBirdsColor()
     {
         if (GameController.instance.GetSelectedBird() == 0)

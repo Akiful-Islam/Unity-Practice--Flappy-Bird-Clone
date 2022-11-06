@@ -474,6 +474,9 @@ MonoBehaviour:
   - {fileID: 1858142500, guid: 15fcb86b5b1c28046b4f2d4fe45fdee6, type: 3}
   - {fileID: -1816089519, guid: 15fcb86b5b1c28046b4f2d4fe45fdee6, type: 3}
   - {fileID: 84966925, guid: 15fcb86b5b1c28046b4f2d4fe45fdee6, type: 3}
+  _bronzeScore: 5
+  _silverScore: 15
+  _goldScore: 25
   _medalImage: {fileID: 634951668}
 --- !u!4 &194334446
 Transform:

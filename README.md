@@ -3,6 +3,8 @@
 #### Description
 A flappy bird clone made in Unity 2021. With the help of assets provided by Awesome Tuts. The gameplay is similar to vanilla Flappy Bird. With some extra features. Play the demo [here](https://play.unity.com/mg/other/builds-ri-7).
 
+__Note__: The sole purpose of this project was to practice and grasp the fundamentals of the Unity Engine. There is no intention to monetize or profit from this project.
+
 
 ## Gameplay
 - ##### Tap the screen (Or on the desktop, click on the screen) to make the bird flap.
